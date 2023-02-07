@@ -1,0 +1,21 @@
+<?php
+
+use Magento\Framework\View\Element\Template;
+use MarkShust\LayoutHandleLogger\ViewModel\Handles;
+
+/** @var Template $block */
+/** @var Handles $handlesViewModel */
+$handlesViewModel = $block->getData('handles_view_model');
+?>
+<?php if ($isDeveloperMode = $handlesViewModel->isDeveloperMode()) : ?>
+    <div style="background-color: #f9f9f9;">
+        <div class="page-main">
+            <h3 style="margin-bottom: 10px;">Layout Handles:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <?php foreach ($handlesViewModel->getHandles() ?? [] as $handle) : ?>
+                    <li><?= $handle ?></li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    </div>
+<?php endif ?>
